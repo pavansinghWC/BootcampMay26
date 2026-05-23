@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Growth Leap — Facilitator Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #efeae0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="direction-a.jsx"></script>
+<script type="text/babel" src="direction-b.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection
+        id="intro"
+        title="Growth Leap · Facilitator Dashboard"
+        subtitle="Standalone tool, Periskope-integrated. Two warm-humanist directions, same content. Day 3 of 5 — Reaching — for Pacific Mercy Hospitalist Pod 2. Drag artboards to reorder, click any to focus."
+      >
+        <DCArtboard id="readme" label="Read me · system notes" width={520} height={820}>
+          <div style={{ width: 520, height: 820, background: "#FBF8F1", padding: "44px 44px", fontFamily: "'Source Serif 4', Georgia, serif", color: "#1F1A14", overflow: "hidden" }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A6E5E" }}>
+              Growth Leap · v0.1 · for Sana
+            </div>
+            <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 38, fontStyle: "italic", letterSpacing: "-0.015em", marginTop: 18, lineHeight: 1.15 }}>
+              A facilitator's reading room, not a dashboard.
+            </div>
+
+            <div style={{ marginTop: 28, fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 16, color: "#4A4036", lineHeight: 1.6 }}>
+              The brief said this is the data foundation everything sits on. That's true, and also why it can't feel like a SaaS panel.
+              A burned-out doctor isn't a row. Quiet on a Wednesday isn't a metric.
+            </div>
+
+            <div style={{ marginTop: 28, paddingTop: 22, borderTop: "1px solid #D8CDB5" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: "0.14em", color: "#7A6E5E", textTransform: "uppercase", marginBottom: 12 }}>What's here · twelve artboards</div>
+              {[
+                ["Direction A · Editorial", "Off-white paper, Source Serif 4, rust accent. Magazine-restrained."],
+                ["Direction B · Almanac", "Cream + olive + ochre, Fraunces / Inter. Field-notebook density."],
+                ["", ""],
+                ["Today snapshot", "Who's in, who's quiet, what they committed to. The morning window."],
+                ["Arc trend", "Five days × six doctors, morning + evening cells. Shape of the week."],
+                ["Quiet radar", "One doctor. The pattern. A drafted human reach, not another ping."],
+                ["Celebration drafter", "AI draft + source data + tone check. You approve, it ships at 6:00."],
+                ["WhatsApp thread", "Doctor-facing: how the morning of Day 3 actually reads."],
+                ["SMS nudges", "Reminder + social, with annotation. James's lock screen."],
+              ].map(([h, s], i) => (
+                <div key={i} style={{ marginBottom: 12 }}>
+                  <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 15, fontWeight: 600 }}>{h}</div>
+                  {s && <div style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 14, color: "#4A4036", marginTop: 2 }}>{s}</div>}
+                </div>
+              ))}
+            </div>
+
+            <div style={{ position: "absolute", bottom: 44, left: 44, right: 44, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: "0.08em", color: "#7A6E5E", lineHeight: 1.7 }}>
+              <div>COHORT · Pacific Mercy Pod 2 · 6 hospitalists</div>
+              <div>TODAY · Wed May 22 · 11:42 AM · Day 3 of 5 (Reaching)</div>
+              <div>FACILITATOR · Sana Ahmadi</div>
+              <div>INTEGRATION · Periskope (WhatsApp CRM) via API · this app is the cohort layer on top</div>
+            </div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection
+        id="direction-a"
+        title="Direction A · Editorial"
+        subtitle="Off-white paper, Source Serif 4, JetBrains Mono accents, single rust note. Generous whitespace. The thoughtful publication, not the tool."
+      >
+        <DCArtboard id="a-today" label="A · Today snapshot" width={1280} height={820}>
+          <A_Today />
+        </DCArtboard>
+        <DCArtboard id="a-arc" label="A · 5-day arc" width={1280} height={820}>
+          <A_Arc />
+        </DCArtboard>
+        <DCArtboard id="a-quiet" label="A · Quiet radar" width={1280} height={820}>
+          <A_Quiet />
+        </DCArtboard>
+        <DCArtboard id="a-celebration" label="A · Celebration drafter" width={1280} height={820}>
+          <A_Celebration />
+        </DCArtboard>
+        <DCArtboard id="a-whatsapp" label="A · WhatsApp · doctor view" width={390} height={844}>
+          <A_WhatsApp />
+        </DCArtboard>
+        <DCArtboard id="a-sms" label="A · SMS nudges · James's lock screen" width={390} height={844}>
+          <A_SMS />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection
+        id="direction-b"
+        title="Direction B · Almanac"
+        subtitle="Cream paper, Fraunces display + Inter body, olive primary + ochre secondary. Left sidebar nav, denser grid. The field notebook, not the publication."
+      >
+        <DCArtboard id="b-today" label="B · Today snapshot" width={1280} height={820}>
+          <B_Today />
+        </DCArtboard>
+        <DCArtboard id="b-arc" label="B · 5-day arc" width={1280} height={820}>
+          <B_Arc />
+        </DCArtboard>
+        <DCArtboard id="b-quiet" label="B · Quiet radar" width={1280} height={820}>
+          <B_Quiet />
+        </DCArtboard>
+        <DCArtboard id="b-celebration" label="B · Celebration drafter" width={1280} height={820}>
+          <B_Celebration />
+        </DCArtboard>
+        <DCArtboard id="b-whatsapp" label="B · WhatsApp · doctor view" width={390} height={844}>
+          <B_WhatsApp />
+        </DCArtboard>
+        <DCArtboard id="b-sms" label="B · SMS nudges · James's lock screen" width={390} height={844}>
+          <B_SMS />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>
